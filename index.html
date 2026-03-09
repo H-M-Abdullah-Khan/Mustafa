@@ -1,17 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mustafa Hassan </title>
+    <title>Mustafa Hassan</title>
     
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Poppins', system-ui, sans-serif;
+            font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
         }
 
         body {
@@ -20,7 +19,7 @@
             overflow-x: hidden;
         }
 
-        /* ---------- INTRO FIREWORKS CONTAINER (FilFar style) ---------- */
+        /* ---------- INTRO FIREWORKS ONLY (5 SEC, NO TEXT) ---------- */
         #intro-container {
             position: fixed;
             top: 0;
@@ -29,10 +28,6 @@
             height: 100%;
             background: #000;
             z-index: 2000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
             pointer-events: none;
         }
@@ -46,50 +41,13 @@
             display: block;
         }
 
-        .intro-text {
-            position: relative;
-            z-index: 2010;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
-            padding: 2rem 3.5rem;
-            border-radius: 60px;
-            border: 1px solid rgba(255, 200, 100, 0.5);
-            animation: introPulse 5s forwards;
-            max-width: 90%;
-        }
-
-        @keyframes introPulse {
-            0% { opacity: 0; transform: scale(0.9); box-shadow: 0 0 0 rgba(255,200,0,0); }
-            15% { opacity: 1; transform: scale(1); box-shadow: 0 0 50px #ffaa33; }
-            85% { opacity: 1; transform: scale(1); box-shadow: 0 0 70px #ff8800; }
-            100% { opacity: 0; transform: scale(1.1); box-shadow: 0 0 0 rgba(255,200,0,0); }
-        }
-
-        .intro-text h2 {
-            font-size: clamp(2.5rem, 10vw, 5.5rem);
-            font-weight: 800;
-            background: linear-gradient(135deg, #ffaa33, #ffdd55, #ff8800);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: 2px;
-        }
-
-        .intro-text p {
-            font-size: clamp(1.3rem, 5vw, 2.3rem);
-            font-weight: 400;
-            color: #ffeedd;
-            margin-top: 0.5rem;
-        }
-
-        /* ---------- MAIN WEBSITE (CONTENT AFTER FIREWORKS) ---------- */
+        /* ---------- MAIN WEBSITE (BLUE & WHITE THEME) ---------- */
         #main-website {
             position: relative;
             width: 100%;
             min-height: 100vh;
-            background: linear-gradient(145deg, #0a0c1a, #1a1f35);
-            color: white;
+            background: linear-gradient(145deg, #f0f8ff, #e6f0fa);
+            color: #02457a;
             opacity: 0;
             transition: opacity 1.2s ease;
             padding-bottom: 4rem;
@@ -110,311 +68,539 @@
             min-height: 90vh;
             text-align: center;
             padding: 2rem 1rem;
+            background: linear-gradient(135deg, #ffffff, #e3f0ff);
+            border-radius: 0 0 70px 70px;
+            box-shadow: 0 20px 40px rgba(0, 67, 156, 0.15);
+            border-bottom: 4px solid #4a90e2;
         }
 
         .hero h1 {
             font-size: clamp(3.5rem, 16vw, 8rem);
             font-weight: 900;
-            background: linear-gradient(145deg, #ffdb7e, #ffb347, #ff944d);
+            background: linear-gradient(145deg, #02457a, #1c7ed6, #4a90e2);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 0 30px #ff8c42, 0 0 70px #ff5700;
+            letter-spacing: 2px;
             margin-bottom: 0.75rem;
             line-height: 1.2;
+            text-shadow: 0 5px 15px rgba(0, 103, 184, 0.3);
         }
 
         .hero-badge {
-            background: rgba(255, 140, 0, 0.2);
-            backdrop-filter: blur(10px);
-            border: 2px solid #ffaa33;
-            border-radius: 60px;
+            background: linear-gradient(145deg, #1c7ed6, #4a90e2);
+            color: white;
             padding: 1rem 3rem;
+            border-radius: 60px;
             font-size: clamp(1.4rem, 5vw, 2.2rem);
-            font-weight: 600;
-            color: #ffdcaa;
-            box-shadow: 0 15px 35px rgba(255, 140, 0, 0.3);
+            font-weight: 700;
+            box-shadow: 0 15px 30px rgba(28, 126, 214, 0.4);
             margin: 1.5rem 0 1rem;
+            border: 3px solid white;
+            letter-spacing: 1px;
         }
 
         .hero-message {
             max-width: 750px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid #ffaa3370;
-            border-radius: 80px;
+            background: white;
+            border-radius: 70px;
             padding: 1.8rem 2.8rem;
             font-size: clamp(1.4rem, 4.5vw, 2rem);
-            color: #ffefd0;
+            box-shadow: 0 10px 30px rgba(0, 103, 184, 0.2), 0 0 0 2px #4a90e2 inset;
+            color: #02457a;
             line-height: 1.6;
             margin: 1.5rem 0;
+            font-weight: 600;
         }
 
         .hero-emoji {
             font-size: 5rem;
-            filter: drop-shadow(0 10px 30px #ffaa33);
+            filter: drop-shadow(0 10px 20px #4a90e2);
         }
 
-        /* SECTION TITLES */
+        /* SECTION TITLES - BLUE THEME */
         .section-title {
-            font-size: clamp(2.8rem, 7vw, 4.2rem);
-            font-weight: 700;
+            font-size: clamp(2.8rem, 7vw, 4rem);
+            font-weight: 800;
             text-align: center;
             margin: 4rem 0 2.5rem;
-            background: linear-gradient(145deg, #ffb347, #ff8c42, #ff6a00);
+            background: linear-gradient(145deg, #02457a, #1c7ed6, #4a90e2);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 5px 30px rgba(255, 100, 0, 0.3);
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #02457a, #4a90e2);
+            margin: 1rem auto 0;
+            border-radius: 4px;
         }
 
         /* CARD GRID */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2.2rem;
             margin: 2.5rem 0;
         }
 
         .glass-card {
-            background: rgba(20, 25, 45, 0.6);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 170, 50, 0.4);
+            background: white;
+            border: 2px solid #a0c8f0;
             border-radius: 40px;
             padding: 2.5rem 1.8rem;
-            box-shadow: 0 30px 45px -15px #000, 0 0 0 1px rgba(255, 200, 100, 0.1) inset;
+            box-shadow: 0 20px 35px -5px rgba(0, 67, 156, 0.2), 0 0 0 1px #4a90e2 inset;
             transition: all 0.3s ease;
         }
 
         .glass-card:hover {
-            transform: translateY(-10px);
-            border-color: #ffaa33;
-            box-shadow: 0 40px 60px -10px #000, 0 0 40px #ffaa33;
+            transform: translateY(-12px);
+            border-color: #02457a;
+            box-shadow: 0 30px 45px -8px #02457a, 0 0 30px #7bb0e6;
         }
 
         .glass-card h3 {
-            font-size: 2.4rem;
+            font-size: 2.2rem;
             margin-bottom: 1.2rem;
-            color: #ffbc5c;
+            color: #02457a;
             display: flex;
             align-items: center;
             gap: 12px;
+            font-weight: 700;
+            border-bottom: 2px dashed #4a90e2;
+            padding-bottom: 0.8rem;
         }
 
         .glass-card p {
-            font-size: 1.4rem;
-            line-height: 1.6;
-            color: #e0daca;
+            font-size: 1.3rem;
+            line-height: 1.7;
+            color: #1e3a5f;
+            font-weight: 500;
         }
 
         .emoji-icon {
-            font-size: 3rem;
-            filter: drop-shadow(0 0 15px #ffb347);
+            font-size: 2.8rem;
+            filter: drop-shadow(0 5px 8px #4a90e2);
         }
 
-        /* FRIEND ZONE */
+        /* FRIEND ZONE - BLUE STYLE */
         .friend-zone {
             display: flex;
             flex-wrap: wrap;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(20px);
+            background: linear-gradient(145deg, #ffffff, #d9ecff);
             border-radius: 70px;
             padding: 3rem 2.5rem;
             margin: 4rem 0;
-            border: 2px solid #ffaa3370;
+            border: 3px solid #4a90e2;
+            box-shadow: 0 30px 40px rgba(28, 126, 214, 0.3);
             align-items: center;
             justify-content: space-between;
             gap: 2rem;
         }
 
         .friend-avatar {
-            font-size: 8rem;
+            font-size: 7rem;
             line-height: 1;
-            filter: drop-shadow(0 10px 30px #ff8c00);
+            filter: drop-shadow(0 10px 20px #1c7ed6);
+            background: white;
+            padding: 1rem;
+            border-radius: 50%;
+            border: 3px solid #4a90e2;
+        }
+
+        .friend-text {
+            flex: 1;
+            min-width: 250px;
         }
 
         .friend-text h4 {
-            font-size: 3rem;
-            color: #ffbc5c;
-            margin-bottom: 0.5rem;
+            font-size: 2.8rem;
+            color: #02457a;
+            margin-bottom: 0.8rem;
+            font-weight: 800;
         }
 
         .friend-text p {
-            font-size: 1.8rem;
-            color: #fff2db;
+            font-size: 1.7rem;
+            color: #1e3a5f;
+            font-weight: 600;
             line-height: 1.5;
         }
         .friend-text span {
-            font-size: 1.4rem;
-            color: #ffc491;
+            font-size: 1.3rem;
+            color: #1c7ed6;
             display: block;
             margin-top: 1.2rem;
+            font-weight: 600;
         }
 
-        /* SPECIAL BLOCK */
-        .special-block {
-            background: linear-gradient(145deg, #101624, #080c1a);
-            border-radius: 70px;
-            padding: 3.5rem 2.5rem;
+        /* WISHES SECTION - BLUE CARDS */
+        .wishes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
             margin: 3rem 0;
-            border: 1px solid #ffaa3360;
+        }
+
+        .wish-card {
+            background: white;
+            border-radius: 50px;
+            padding: 2.5rem;
+            border-left: 8px solid #4a90e2;
+            box-shadow: 0 15px 30px rgba(0, 67, 156, 0.15);
+        }
+
+        .wish-card p {
+            font-size: 1.5rem;
+            color: #02457a;
+            line-height: 1.8;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .wish-card .wish-author {
+            color: #1c7ed6;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-align: right;
+        }
+
+        /* GAMES SECTION */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .game-card {
+            background: white;
+            border: 3px solid #4a90e2;
+            border-radius: 50px;
+            padding: 2rem;
             text-align: center;
+            box-shadow: 0 20px 30px rgba(28, 126, 214, 0.2);
+            transition: transform 0.3s;
         }
 
-        .special-block h2 {
-            font-size: 3.2rem;
-            color: #ffc46b;
-            margin-bottom: 1.8rem;
+        .game-card:hover {
+            transform: scale(1.03);
+            border-color: #02457a;
         }
 
-        .firework-emoji-lg {
-            font-size: 5.5rem;
-            letter-spacing: 15px;
-            filter: drop-shadow(0 10px 30px #ffaa33);
+        .game-card h3 {
+            font-size: 2rem;
+            color: #02457a;
+            margin-bottom: 1rem;
+            font-weight: 800;
         }
 
-        /* CHIPS */
+        .game-card p {
+            font-size: 1.3rem;
+            color: #1e3a5f;
+            margin: 1rem 0;
+            font-weight: 600;
+        }
+
+        .game-button {
+            background: linear-gradient(145deg, #1c7ed6, #02457a);
+            color: white;
+            border: none;
+            padding: 1.2rem 2.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 20px #1c7ed6;
+            transition: all 0.2s;
+            width: 100%;
+            letter-spacing: 1px;
+        }
+
+        .game-button:hover {
+            background: linear-gradient(145deg, #02457a, #1c7ed6);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px #02457a;
+        }
+
+        .game-result {
+            margin-top: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #02457a;
+            min-height: 3rem;
+        }
+
+        /* MEMORIES SECTION */
+        .memories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .memory-item {
+            background: white;
+            border-radius: 30px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid #a0c8f0;
+            box-shadow: 0 15px 25px rgba(0, 67, 156, 0.1);
+        }
+
+        .memory-item .memory-emoji {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .memory-item h4 {
+            font-size: 1.8rem;
+            color: #02457a;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .memory-item p {
+            font-size: 1.3rem;
+            color: #1e3a5f;
+        }
+
+        /* COUNTDOWN SECTION */
+        .countdown-box {
+            background: linear-gradient(145deg, #02457a, #1c7ed6);
+            border-radius: 70px;
+            padding: 3.5rem;
+            margin: 3rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .countdown-box h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .countdown-number {
+            font-size: 6rem;
+            font-weight: 900;
+            background: white;
+            color: #02457a;
+            display: inline-block;
+            padding: 1rem 3rem;
+            border-radius: 60px;
+            margin: 1rem 0;
+            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+        }
+
+        .countdown-label {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        /* CHIPS SECTION */
         .chip-wrapper {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.5rem;
+            gap: 1.2rem;
             justify-content: center;
             margin: 3rem 0;
         }
 
         .chip {
-            background: rgba(255, 140, 0, 0.2);
-            backdrop-filter: blur(8px);
-            border: 1px solid #ffaa33;
+            background: linear-gradient(145deg, #ffffff, #e3f0ff);
+            color: #02457a;
+            border: 2px solid #4a90e2;
             border-radius: 60px;
-            padding: 1.2rem 2.8rem;
-            font-size: 1.6rem;
-            color: #ffdcaa;
-            font-weight: 500;
+            padding: 1rem 2.5rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+            box-shadow: 0 8px 15px rgba(28, 126, 214, 0.2);
         }
 
+        /* FOOTER */
         .footer-note {
             text-align: center;
             margin-top: 5rem;
-            opacity: 0.5;
-            font-size: 1.2rem;
-            color: #ccc;
+            font-size: 1.3rem;
+            color: #02457a;
+            font-weight: 600;
+            padding: 2rem;
+            border-top: 2px dashed #4a90e2;
         }
 
         @media (max-width: 600px) {
             .glass-card { padding: 2rem 1.2rem; }
-            .glass-card h3 { font-size: 2rem; }
+            .glass-card h3 { font-size: 1.8rem; }
             .friend-zone { padding: 2rem 1.5rem; }
-            .friend-avatar { font-size: 5.5rem; }
-            .friend-text p { font-size: 1.5rem; }
+            .friend-avatar { font-size: 5rem; }
+            .friend-text p { font-size: 1.4rem; }
+            .countdown-number { font-size: 4rem; padding: 0.8rem 2rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- INTRO: 5 SEC FILFAR-STYLE FIREWORKS (BOTTOM TO TOP) -->
+    <!-- INTRO: 5 SEC FILFAR-STYLE FIREWORKS ONLY (NO TEXT) -->
     <div id="intro-container">
         <canvas id="fireworks-canvas"></canvas>
-        <div class="intro-text">
-            <h2>MUSTAFA HASSAN</h2>
-            <p>9 March · 5 sec firework blast</p>
-        </div>
     </div>
 
-    <!-- MAIN WEBSITE CONTENT -->
+    <!-- MAIN WEBSITE - BLUE & WHITE THEME - 8 SECTIONS -->
     <div id="main-website">
         <div class="section-container">
-            <!-- HERO -->
+            
+            <!-- SECTION 1: HERO -->
             <section class="hero">
                 <h1>MUSTAFA HASSAN</h1>
-                <div class="hero-badge">🔥 9 MARCH 🔥</div>
+                <div class="hero-badge">🎂 9 MARCH </div>
                 <div class="hero-message">
-                    ✦ Happy Birthday, brother! ✦ <br> From bottom to top, fireworks for you.
+                    HAPPY BIRTHDAY BROTHER! MAY YOUR DAY BE FILLED WITH BLUE SKIES AND BRIGHT MOMENTS.
                 </div>
                 <div class="hero-emoji">🎆✨🎇✨🎆</div>
             </section>
 
-            <!-- SECTION 1: ABOUT MUSTAFA -->
-            <h2 class="section-title">⚡ THE LEGEND ⚡</h2>
+            <!-- SECTION 2: ABOUT MUSTAFA -->
+            <h2 class="section-title">ABOUT THE LEGEND</h2>
             <div class="card-grid">
                 <div class="glass-card">
-                    <h3><span class="emoji-icon">🚀</span> 9 MARCH</h3>
-                    <p>The day the universe got brighter. Mustafa Hassan — born to shine.</p>
+                    <h3><span class="emoji-icon">📅</span> 9 MARCH</h3>
+                    <p>A day that marks the arrival of an extraordinary soul. Mustafa Hassan brings light and laughter wherever he goes. Born to shine and inspire everyone around him.</p>
                 </div>
                 <div class="glass-card">
-                    <h3><span class="emoji-icon">🤝</span> BEST FRIEND</h3>
-                    <p>Loyal, funny, and real. The definition of a true male friend.</p>
+                    <h3><span class="emoji-icon">🤝</span> TRUE FRIEND</h3>
+                    <p>Loyal, honest, and always there when it matters. Mustafa is the definition of a real male friend. Through thick and thin, he stands strong like a pillar.</p>
                 </div>
                 <div class="glass-card">
-                    <h3><span class="emoji-icon">🏆</span> LEGEND STATUS</h3>
-                    <p>Another year, another win. Keep crushing life, brother.</p>
+                    <h3><span class="emoji-icon">⭐</span> LEGEND STATUS</h3>
+                    <p>With a heart of gold and a spirit that never quits, Mustafa continues to achieve greatness. Another year means more victories and happy moments.</p>
                 </div>
             </div>
 
-            <!-- FRIEND ZONE -->
+            <!-- SECTION 3: FRIEND ZONE (PERSONALIZED) -->
             <div class="friend-zone">
-                <div class="friend-avatar">👑🦁🔥</div>
+                <div class="friend-avatar">👑🦁</div>
                 <div class="friend-text">
-                    <h4>Mustafa Hassan · 9 March</h4>
-                    <p>“To my male friend: you're the firework in the sky. Happy birthday!”</p>
-                    <span>— from your brother</span>
+                    <h4>MUSTAFA HASSAN</h4>
+                    <p>“To my brother from another mother. You're the firework that lights up my life. Happy Birthday, Mustafa!”</p>
+                    <span>— YOUR BEST FRIEND FOREVER</span>
                 </div>
             </div>
 
-            <!-- SECTION 2: FIREWORK MOMENTS -->
-            <h2 class="section-title">🎇 FILFAR FIREWORKS 🎇</h2>
-            <div class="card-grid">
-                <div class="glass-card">
-                    <h3><span class="emoji-icon">⏱️</span> 5 SEC INTRO</h3>
-                    <p>Exactly 5 seconds of FilFar-style fireworks rising from bottom to top.</p>
+            <!-- SECTION 4: BIRTHDAY WISHES (CARDS) -->
+            <h2 class="section-title">BIRTHDAY WISHES</h2>
+            <div class="wishes-grid">
+                <div class="wish-card">
+                    <p>“May your year be filled with success, happiness, and endless adventures. You deserve all the joy in the world!”</p>
+                    <div class="wish-author">— FROM YOUR BROTHER</div>
                 </div>
-                <div class="glass-card">
-                    <h3><span class="emoji-icon">🎨</span> COLOR EXPLOSION</h3>
-                    <p>Red, yellow, green, cyan, blue, magenta, orange — every color of joy.</p>
+                <div class="wish-card">
+                    <p>“Happy 9th March! Stay awesome, stay humble, and keep crushing every goal you set. The world is yours!”</p>
+                    <div class="wish-author">— A TRUE FAN</div>
                 </div>
-                <div class="glass-card">
-                    <h3><span class="emoji-icon">🎂</span> ENGLISH WISH</h3>
-                    <p>Happy 9th March, Mustafa! Have a blast today and always.</p>
+                <div class="wish-card">
+                    <p>“Wishing you a birthday as bright and beautiful as your smile. May all your dreams come true, Mustafa!”</p>
+                    <div class="wish-author">— FRIEND FOREVER</div>
                 </div>
             </div>
 
-            <!-- SPECIAL WISH BLOCK -->
-            <div class="special-block">
-                <h2>✨ HAPPY BIRTHDAY MUSTAFA ✨</h2>
-                <div class="firework-emoji-lg">🎆🎇🧨🎆🎇</div>
-                <p style="font-size: 2rem; margin-top: 2rem; color: #ffd966;">9 March · male friend</p>
+            <!-- SECTION 5: FUN GAMES WITH TWIST -->
+            <h2 class="section-title">BIRTHDAY GAMES</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <h3>🎆 FIREWORK CLICK</h3>
+                    <p>CLICK TO LAUNCH A VIRTUAL FIREWORK FOR MUSTAFA</p>
+                    <button class="game-button" id="firework-clicker">LAUNCH FIREWORK</button>
+                    <div class="game-result" id="click-result"></div>
+                </div>
+
+                <div class="game-card">
+                    <h3>🎲 LUCKY NUMBER</h3>
+                    <p>GUESS MUSTAFA'S LUCKY NUMBER (1-10)</p>
+                    <button class="game-button" id="lucky-number">PICK NUMBER</button>
+                    <div class="game-result" id="number-result"></div>
+                </div>
+
+                <div class="game-card">
+                    <h3>✨ WISH GENERATOR</h3>
+                    <p>GET A RANDOM BIRTHDAY WISH</p>
+                    <button class="game-button" id="wish-generator">GENERATE WISH</button>
+                    <div class="game-result" id="wish-result"></div>
+                </div>
             </div>
 
-            <!-- CHIP SECTION -->
+            <!-- SECTION 6: MEMORIES CORNER -->
+            <!-- <h2 class="section-title">CHERISHED MOMENTS</h2>
+            <div class="memories-grid">
+                <div class="memory-item">
+                    <div class="memory-emoji">🎮</div>
+                    <h4>GAME NIGHTS</h4>
+                    <p>Late night gaming sessions and endless laughter. Those memories will last forever.</p>
+                </div>
+                <div class="memory-item">
+                    <div class="memory-emoji">🏀</div>
+                    <h4>COURT KINGS</h4>
+                    <p>From basketball games to friendly competitions, always a good time together.</p>
+                </div>
+                <div class="memory-item">
+                    <div class="memory-emoji">🍕</div>
+                    <h4>FOOD ADVENTURES</h4>
+                    <p>Exploring new places and trying new foods. Every meal was a celebration.</p>
+                </div>
+                <div class="memory-item">
+                    <div class="memory-emoji">🎬</div>
+                    <h4>MOVIE MARATHONS</h4>
+                    <p>Watching movies till dawn, discussing life, and making plans for the future.</p>
+                </div>
+            </div> -->
+
+            <!-- SECTION 7: COUNTDOWN TO BIRTHDAY -->
+            <h2 class="section-title">COUNTDOWN</h2>
+            <div class="countdown-box">
+                <h2>MARCH 9TH IS HERE!</h2>
+                <div class="countdown-number">9 MARCH</div>
+                <div class="countdown-label">THE DAY MUSTAFA HASSAN WAS BORN</div>
+                <p style="font-size: 1.8rem; margin-top: 2rem; font-weight: 600;">CELEBRATE WITH FIREWORKS AND JOY</p>
+            </div>
+
+            <!-- SECTION 8: BIRTHDAY CHIPS / TAGS -->
+            <h2 class="section-title">BIRTHDAY TAGS</h2>
             <div class="chip-wrapper">
-                <div class="chip">🚀 mustafa hassan</div>
-                <div class="chip">🎂 9 march</div>
-                <div class="chip">🔥 best friend</div>
-                <div class="chip">🎆 fireworks</div>
+                <div class="chip">🎂 MUSTAFA HASSAN</div>
+                <div class="chip">📅 9 MARCH</div>
+                <div class="chip">🔥 MALE FRIEND</div>
+                <div class="chip">🎆 FIREWORKS</div>
+                <div class="chip">💙 BLUE THEME</div>
+                <div class="chip">🎮 GAME TIME</div>
+                <div class="chip">✨ LEGEND</div>
+                <div class="chip">🏆 WINNER</div>
             </div>
 
             <div class="footer-note">
-                © 2026 · FilFar style fireworks
+                HAPPY BIRTHDAY MUSTAFA HASSAN · 9TH MARCH · CELEBRATE IN STYLE
             </div>
         </div>
     </div>
 
     <script>
         (function() {
-            // ---------- FILFAR-STYLE FIREWORKS ENGINE (BOTTOM TO TOP) ----------
+            // ---------- FILFAR-STYLE FIREWORKS ENGINE (PURE, 5 SEC) ----------
             const canvas = document.getElementById('fireworks-canvas');
             const ctx = canvas.getContext('2d');
             
             let width, height;
-            let fireworks = [];      // ascending rockets
-            let particles = [];       // explosion particles
-            let sparks = [];          // sparkler effects
+            let fireworks = [];
+            let particles = [];
             let timer = 0;
             let colorTimer = 0;
             let colorIndex = 1;
-            
-            // Mouse position (unused but kept for potential)
-            let mouseX = 0, mouseY = 0;
             
             function resize() {
                 width = window.innerWidth;
@@ -424,13 +610,6 @@
             }
             window.addEventListener('resize', resize);
             resize();
-            
-            // Helper functions from FilFar
-            function distance(x1, y1, x2, y2) {
-                const dx = x1 - x2;
-                const dy = y1 - y2;
-                return Math.sqrt(dx*dx + dy*dy);
-            }
             
             function getAngle(x1, y1, x2, y2) {
                 if (x1 == x2) return (y1 > y2) ? 90 : 270;
@@ -443,49 +622,42 @@
                 return roundFlag === 'round' ? Math.round(val) : val;
             }
             
-            // Color rotation (7 colors like FilFar)
             function getFireworkColor() {
                 if (timer > colorTimer) {
                     colorIndex = random(1, 7, 'round');
-                    colorTimer = timer + 30; // change color every ~0.5 sec at 60fps
+                    colorTimer = timer + 30;
                 }
                 switch(colorIndex) {
-                    case 1: return '#ff0000'; // red
-                    case 2: return '#ffff00'; // yellow
-                    case 3: return '#00ff00'; // green
-                    case 4: return '#00ffff'; // cyan
-                    case 5: return '#0000ff'; // blue
-                    case 6: return '#ff00ff'; // magenta
-                    case 7: return '#ffac00'; // orange
+                    case 1: return '#ff0000';
+                    case 2: return '#ffff00';
+                    case 3: return '#00ff00';
+                    case 4: return '#00ffff';
+                    case 5: return '#0000ff';
+                    case 6: return '#ff00ff';
+                    case 7: return '#ffac00';
                     default: return '#ffaa00';
                 }
             }
             
-            // Rocket constructor (bottom to top)
             function Firework() {
                 this.x = this.sx = width / 2 + random(-200, 200);
-                this.y = this.sy = height - 5; // bottom
+                this.y = this.sy = height - 5;
                 this.tx = random(200, width - 200);
-                this.ty = random(100, height / 2); // target mid-top
-                
+                this.ty = random(100, height / 2);
                 this.color = getFireworkColor();
-                
                 const angle = getAngle(this.sx, this.sy, this.tx, this.ty);
                 this.vx = Math.cos(angle * Math.PI/180);
                 this.vy = Math.sin(angle * Math.PI/180);
-                
                 this.speed = random(700, 1100);
                 this.gravity = 1.5;
-                this.s = 0; // age
+                this.s = 0;
                 this.del = false;
             }
             
             Firework.prototype.update = function(ms) {
                 const msSec = ms / 1000;
-                
-                // Explode after certain time (around 1-1.5 sec)
                 if (this.s > 2000 / ms) {
-                    createParticles(1, 40, this.x, this.y, this.color); // type 1 particles
+                    createParticles(40, this.x, this.y, this.color);
                     this.del = true;
                 } else {
                     this.speed *= 0.98;
@@ -502,37 +674,29 @@
                 ctx.fill();
             };
             
-            // Particle constructor
-            function Particle(type, x, y, color) {
+            function Particle(x, y, color) {
                 this.x = x;
                 this.y = y;
-                this.type = type || 1;
                 this.color = color;
-                
                 const angle = random(0, 360);
                 this.vx = Math.cos(angle * Math.PI/180);
                 this.vy = Math.sin(angle * Math.PI/180);
-                
                 this.speed = random(200, 500);
                 this.gravity = 1;
                 this.opacity = 1;
                 this.s = 0;
-                this.del = false;
             }
             
             Particle.prototype.update = function(ms) {
                 const msSec = ms / 1000;
-                
                 if (this.s > 900 / ms) {
                     this.opacity -= 0.05;
-                    if (this.opacity <= 0) this.opacity = 0;
                 }
-                
                 this.speed *= 0.96;
                 this.x -= this.vx * this.speed * msSec;
                 this.y -= this.vy * this.speed * msSec - this.gravity;
-                
                 this.s++;
+                return this.opacity > 0;
             };
             
             Particle.prototype.draw = function() {
@@ -545,39 +709,32 @@
                 ctx.restore();
             };
             
-            // Create particles explosion
-            function createParticles(type, count, x, y, color) {
+            function createParticles(count, x, y, color) {
                 for (let i = 0; i < count; i++) {
-                    particles.push(new Particle(type, x, y, color));
+                    particles.push(new Particle(x, y, color));
                 }
             }
             
-            // Firework creation
             function createFirework() {
                 fireworks.push(new Firework());
             }
             
-            // Start with a few fireworks
-            for (let i = 0; i < 3; i++) {
-                setTimeout(() => createFirework(), i * 300);
+            for (let i = 0; i < 4; i++) {
+                setTimeout(() => createFirework(), i * 200);
             }
             
-            // Animation loop
             let lastTimestamp = 0;
             function animate(now) {
                 const delta = Math.min(100, now - (lastTimestamp || now - 16));
                 lastTimestamp = now;
                 
-                // Clear with fade effect
                 ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
                 ctx.fillRect(0, 0, width, height);
                 
-                // Spawn new fireworks occasionally
-                if (Math.random() < 0.02 && fireworks.length < 8) {
+                if (Math.random() < 0.03 && fireworks.length < 10) {
                     createFirework();
                 }
                 
-                // Update and draw fireworks
                 for (let i = fireworks.length - 1; i >= 0; i--) {
                     const f = fireworks[i];
                     if (f.del) {
@@ -588,13 +745,11 @@
                     }
                 }
                 
-                // Update and draw particles
                 for (let i = particles.length - 1; i >= 0; i--) {
                     const p = particles[i];
-                    if (p.opacity <= 0) {
+                    if (!p.update(delta)) {
                         particles.splice(i, 1);
                     } else {
-                        p.update(delta);
                         p.draw();
                     }
                 }
@@ -610,16 +765,50 @@
             const mainSite = document.getElementById('main-website');
 
             setTimeout(() => {
-                // Fade out intro
                 introOverlay.style.opacity = '0';
-                
                 setTimeout(() => {
                     introOverlay.style.display = 'none';
                     mainSite.style.opacity = '1';
-                }, 1500); // match transition
-            }, 5000); // 5 seconds exactly
+                }, 1500);
+            }, 5000);
 
             mainSite.style.opacity = '0';
+
+            // ---------- GAMES INTERACTIVITY ----------
+            document.getElementById('firework-clicker').addEventListener('click', function() {
+                const result = document.getElementById('click-result');
+                const messages = [
+                    '🎆 BOOM! FIREWORK LIGHTS THE BLUE SKY!',
+                    '✨ MUSTAFA SMILES AT THE FIREWORK SHOW!',
+                    '💥 ANOTHER FIREWORK FOR MUSTAFA!',
+                    '🎇 THE SKY EXPLODES WITH COLORS!'
+                ];
+                result.textContent = messages[Math.floor(Math.random() * messages.length)];
+            });
+
+            document.getElementById('lucky-number').addEventListener('click', function() {
+                const result = document.getElementById('number-result');
+                const luckyNumber = Math.floor(Math.random() * 10) + 1;
+                if (luckyNumber === 7) {
+                    result.textContent = '🎉 7! JACKPOT! MUSTAFA SENDS A BIG HUG!';
+                } else if (luckyNumber === 9) {
+                    result.textContent = '🎂 9! MARCH 9TH! EXTRA LUCKY DAY!';
+                } else {
+                    result.textContent = `NUMBER ${luckyNumber} - STILL A BLESSING!`;
+                }
+            });
+
+            document.getElementById('wish-generator').addEventListener('click', function() {
+                const result = document.getElementById('wish-result');
+                const wishes = [
+                    'HAPPY BIRTHDAY MUSTAFA! STAY BLESSED!',
+                    '9TH MARCH - A DAY TO CELEBRATE YOU!',
+                    'MAY YOUR YEAR BE FILLED WITH BLUE SKIES!',
+                    'YOU ARE A TRUE LEGEND MUSTAFA!',
+                    'HAPPY BIRTHDAY BROTHER FROM ANOTHER MOTHER!'
+                ];
+                result.textContent = wishes[Math.floor(Math.random() * wishes.length)];
+            });
         })();
     </script>
 </body>
