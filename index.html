@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mustafa Hassan</title>
+    <title>Mustafa Hassan Birthday Wishes</title>
+    
+    <!-- GSAP for ScrollTrigger & animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     
     <style>
         * {
@@ -19,7 +23,7 @@
             overflow-x: hidden;
         }
 
-        /* ---------- INTRO FIREWORKS ONLY (5 SEC, NO TEXT) ---------- */
+        /* ---------- INTRO FIREWORKS ONLY (5 SEC) ---------- */
         #intro-container {
             position: fixed;
             top: 0;
@@ -41,7 +45,7 @@
             display: block;
         }
 
-        /* ---------- MAIN WEBSITE (BLUE & WHITE THEME) ---------- */
+        /* ---------- MAIN WEBSITE (BLUE & WHITE) ---------- */
         #main-website {
             position: relative;
             width: 100%;
@@ -50,548 +54,591 @@
             color: #02457a;
             opacity: 0;
             transition: opacity 1.2s ease;
-            padding-bottom: 4rem;
+            overflow-x: hidden;
         }
 
+        /* Parallax layers */
+        .parallax-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .layer-1 { background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><circle cx="10" cy="10" r="2" fill="%234a90e2"/><circle cx="90" cy="30" r="3" fill="%231c7ed6"/><circle cx="30" cy="80" r="2" fill="%2302457a"/><circle cx="70" cy="60" r="4" fill="%234a90e2"/></svg>'); background-size: 200px 200px; }
+        .layer-2 { background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><circle cx="50" cy="20" r="3" fill="%23ffd700"/><circle cx="20" cy="70" r="2" fill="%23ffaa33"/><circle cx="80" cy="40" r="4" fill="%23ff8c42"/></svg>'); background-size: 250px 250px; }
+        .layer-3 { background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.15"><circle cx="40" cy="30" r="2" fill="%23ffffff"/><circle cx="60" cy="80" r="3" fill="%23ffffff"/><circle cx="15" cy="50" r="2" fill="%23ffffff"/></svg>'); background-size: 300px 300px; }
+
         .section-container {
+            position: relative;
+            z-index: 10;
             max-width: 1300px;
             margin: 0 auto;
             padding: 2rem 2rem;
         }
 
-        /* HERO SECTION */
+        /* SECTION 1: HERO GREETING */
         .hero {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 90vh;
+            min-height: 100vh;
             text-align: center;
             padding: 2rem 1rem;
-            background: linear-gradient(135deg, #ffffff, #e3f0ff);
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(10px);
             border-radius: 0 0 70px 70px;
             box-shadow: 0 20px 40px rgba(0, 67, 156, 0.15);
             border-bottom: 4px solid #4a90e2;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-balloon {
+            position: absolute;
+            font-size: 3rem;
+            animation: floatAround 8s infinite linear;
+            filter: drop-shadow(0 10px 15px #4a90e2);
+        }
+
+        .floating-balloon:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+        .floating-balloon:nth-child(2) { top: 70%; left: 85%; animation-delay: 2s; }
+        .floating-balloon:nth-child(3) { top: 40%; left: 90%; animation-delay: 4s; }
+        .floating-balloon:nth-child(4) { top: 80%; left: 15%; animation-delay: 1s; }
+        .floating-balloon:nth-child(5) { top: 20%; left: 80%; animation-delay: 3s; }
+        .floating-balloon:nth-child(6) { top: 60%; left: 10%; animation-delay: 5s; }
+
+        @keyframes floatAround {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(20px, -20px) rotate(5deg); }
+            50% { transform: translate(40px, 0) rotate(0deg); }
+            75% { transform: translate(20px, 20px) rotate(-5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
         }
 
         .hero h1 {
-            font-size: clamp(3.5rem, 16vw, 8rem);
+            font-size: clamp(3rem, 10vw, 5.5rem);
             font-weight: 900;
             background: linear-gradient(145deg, #02457a, #1c7ed6, #4a90e2);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             letter-spacing: 2px;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
             line-height: 1.2;
             text-shadow: 0 5px 15px rgba(0, 103, 184, 0.3);
-        }
-
-        .hero-badge {
-            background: linear-gradient(145deg, #1c7ed6, #4a90e2);
-            color: white;
-            padding: 1rem 3rem;
-            border-radius: 60px;
-            font-size: clamp(1.4rem, 5vw, 2.2rem);
-            font-weight: 700;
-            box-shadow: 0 15px 30px rgba(28, 126, 214, 0.4);
-            margin: 1.5rem 0 1rem;
-            border: 3px solid white;
-            letter-spacing: 1px;
-        }
-
-        .hero-message {
-            max-width: 750px;
-            background: white;
-            border-radius: 70px;
-            padding: 1.8rem 2.8rem;
-            font-size: clamp(1.4rem, 4.5vw, 2rem);
-            box-shadow: 0 10px 30px rgba(0, 103, 184, 0.2), 0 0 0 2px #4a90e2 inset;
-            color: #02457a;
-            line-height: 1.6;
-            margin: 1.5rem 0;
-            font-weight: 600;
-        }
-
-        .hero-emoji {
-            font-size: 5rem;
-            filter: drop-shadow(0 10px 20px #4a90e2);
-        }
-
-        /* SECTION TITLES - BLUE THEME */
-        .section-title {
-            font-size: clamp(2.8rem, 7vw, 4rem);
-            font-weight: 800;
-            text-align: center;
-            margin: 4rem 0 2.5rem;
-            background: linear-gradient(145deg, #02457a, #1c7ed6, #4a90e2);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: 1px;
+            animation: bounceGlow 2s infinite ease-in-out;
             position: relative;
+            z-index: 20;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, #02457a, #4a90e2);
-            margin: 1rem auto 0;
-            border-radius: 4px;
+        @keyframes bounceGlow {
+            0%, 100% { transform: translateY(0) scale(1); text-shadow: 0 0 20px #4a90e2, 0 0 40px #1c7ed6; }
+            50% { transform: translateY(-15px) scale(1.05); text-shadow: 0 0 40px #4a90e2, 0 0 80px #1c7ed6; }
         }
 
-        /* CARD GRID */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.2rem;
-            margin: 2.5rem 0;
-        }
-
-        .glass-card {
-            background: white;
-            border: 2px solid #a0c8f0;
-            border-radius: 40px;
-            padding: 2.5rem 1.8rem;
-            box-shadow: 0 20px 35px -5px rgba(0, 67, 156, 0.2), 0 0 0 1px #4a90e2 inset;
-            transition: all 0.3s ease;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-12px);
-            border-color: #02457a;
-            box-shadow: 0 30px 45px -8px #02457a, 0 0 30px #7bb0e6;
-        }
-
-        .glass-card h3 {
-            font-size: 2.2rem;
-            margin-bottom: 1.2rem;
-            color: #02457a;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 700;
-            border-bottom: 2px dashed #4a90e2;
-            padding-bottom: 0.8rem;
-        }
-
-        .glass-card p {
-            font-size: 1.3rem;
-            line-height: 1.7;
-            color: #1e3a5f;
-            font-weight: 500;
-        }
-
-        .emoji-icon {
-            font-size: 2.8rem;
-            filter: drop-shadow(0 5px 8px #4a90e2);
-        }
-
-        /* FRIEND ZONE - BLUE STYLE */
-        .friend-zone {
-            display: flex;
-            flex-wrap: wrap;
-            background: linear-gradient(145deg, #ffffff, #d9ecff);
-            border-radius: 70px;
-            padding: 3rem 2.5rem;
-            margin: 4rem 0;
-            border: 3px solid #4a90e2;
-            box-shadow: 0 30px 40px rgba(28, 126, 214, 0.3);
-            align-items: center;
-            justify-content: space-between;
-            gap: 2rem;
-        }
-
-        .friend-avatar {
-            font-size: 7rem;
-            line-height: 1;
-            filter: drop-shadow(0 10px 20px #1c7ed6);
-            background: white;
-            padding: 1rem;
-            border-radius: 50%;
-            border: 3px solid #4a90e2;
-        }
-
-        .friend-text {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .friend-text h4 {
-            font-size: 2.8rem;
-            color: #02457a;
-            margin-bottom: 0.8rem;
-            font-weight: 800;
-        }
-
-        .friend-text p {
-            font-size: 1.7rem;
-            color: #1e3a5f;
-            font-weight: 600;
-            line-height: 1.5;
-        }
-        .friend-text span {
-            font-size: 1.3rem;
-            color: #1c7ed6;
-            display: block;
-            margin-top: 1.2rem;
-            font-weight: 600;
-        }
-
-        /* WISHES SECTION - BLUE CARDS */
-        .wishes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .wish-card {
-            background: white;
-            border-radius: 50px;
-            padding: 2.5rem;
-            border-left: 8px solid #4a90e2;
-            box-shadow: 0 15px 30px rgba(0, 67, 156, 0.15);
-        }
-
-        .wish-card p {
-            font-size: 1.5rem;
-            color: #02457a;
-            line-height: 1.8;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .wish-card .wish-author {
-            color: #1c7ed6;
-            font-size: 1.2rem;
-            font-weight: 700;
-            text-align: right;
-        }
-
-        /* GAMES SECTION */
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .game-card {
-            background: white;
-            border: 3px solid #4a90e2;
-            border-radius: 50px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 20px 30px rgba(28, 126, 214, 0.2);
-            transition: transform 0.3s;
-        }
-
-        .game-card:hover {
-            transform: scale(1.03);
-            border-color: #02457a;
-        }
-
-        .game-card h3 {
-            font-size: 2rem;
-            color: #02457a;
-            margin-bottom: 1rem;
-            font-weight: 800;
-        }
-
-        .game-card p {
-            font-size: 1.3rem;
-            color: #1e3a5f;
+        .sparkle-text {
+            font-size: 2.5rem;
             margin: 1rem 0;
-            font-weight: 600;
+            animation: sparkle 1.5s infinite;
         }
 
-        .game-button {
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); filter: drop-shadow(0 0 10px gold); }
+            50% { opacity: 0.7; transform: scale(1.2); filter: drop-shadow(0 0 30px gold); }
+        }
+
+        .hero-button {
             background: linear-gradient(145deg, #1c7ed6, #02457a);
             color: white;
             border: none;
-            padding: 1.2rem 2.5rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 10px 20px #1c7ed6;
-            transition: all 0.2s;
-            width: 100%;
-            letter-spacing: 1px;
-        }
-
-        .game-button:hover {
-            background: linear-gradient(145deg, #02457a, #1c7ed6);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px #02457a;
-        }
-
-        .game-result {
-            margin-top: 1.5rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #02457a;
-            min-height: 3rem;
-        }
-
-        /* MEMORIES SECTION */
-        .memories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .memory-item {
-            background: white;
-            border-radius: 30px;
-            padding: 2rem;
-            text-align: center;
-            border: 2px solid #a0c8f0;
-            box-shadow: 0 15px 25px rgba(0, 67, 156, 0.1);
-        }
-
-        .memory-item .memory-emoji {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
-
-        .memory-item h4 {
+            padding: 1.2rem 3rem;
             font-size: 1.8rem;
-            color: #02457a;
-            margin-bottom: 1rem;
             font-weight: 700;
+            border-radius: 70px;
+            cursor: pointer;
+            box-shadow: 0 15px 30px #1c7ed6;
+            transition: all 0.3s;
+            margin-top: 2rem;
+            border: 3px solid white;
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
+            position: relative;
+            z-index: 20;
         }
 
-        .memory-item p {
-            font-size: 1.3rem;
-            color: #1e3a5f;
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); box-shadow: 0 20px 40px #02457a; }
         }
 
-        /* COUNTDOWN SECTION */
-        .countdown-box {
+        .hero-button:hover {
+            background: linear-gradient(145deg, #02457a, #1c7ed6);
+            transform: translateY(-5px);
+        }
+
+        /* SECTION 2: BIRTHDAY PARAGRAPHS */
+        .paragraphs-section {
+            min-height: 100vh;
+            padding: 4rem 0;
+            position: relative;
+            background: rgba(255,255,255,0.5);
+            backdrop-filter: blur(5px);
+            border-radius: 70px;
+            margin: 2rem 0;
+        }
+
+        .paragraph-card {
+            background: white;
+            border-radius: 50px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 30px 50px rgba(28, 126, 214, 0.2);
+            border: 3px solid #4a90e2;
+            transform: translateX(-50px);
+            opacity: 0;
+            transition: all 0.6s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .paragraph-card.visible {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .paragraph-card:nth-child(even) {
+            transform: translateX(50px);
+        }
+
+        .paragraph-card:nth-child(even).visible {
+            transform: translateX(0);
+        }
+
+        .paragraph-card p {
+            font-size: 1.4rem;
+            line-height: 1.9;
+            color: #02457a;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .paragraph-card h3 {
+            font-size: 2.2rem;
+            color: #1c7ed6;
+            margin-bottom: 1.5rem;
+            border-left: 8px solid #4a90e2;
+            padding-left: 1.5rem;
+        }
+
+        .floating-decor {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.2;
+            animation: floatDecor 6s infinite;
+        }
+
+        @keyframes floatDecor {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(20px, -20px); }
+        }
+
+        /* SECTION 3: SURPRISE GIFT */
+        .gift-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        .gift-container {
+            background: white;
+            border-radius: 70px;
+            padding: 4rem;
+            text-align: center;
+            border: 4px dashed #4a90e2;
+            box-shadow: 0 40px 60px rgba(28, 126, 214, 0.3);
+            max-width: 700px;
+            width: 90%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gift-box {
+            font-size: 10rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            filter: drop-shadow(0 30px 40px #1c7ed6);
+            animation: giftShake 3s infinite;
+            position: relative;
+            z-index: 30;
+        }
+
+        @keyframes giftShake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            75% { transform: rotate(-5deg); }
+        }
+
+        .gift-box:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 40px 60px gold);
+        }
+
+        .gift-message {
+            font-size: 2.2rem;
+            color: #02457a;
+            margin-top: 2rem;
+            font-weight: 700;
+            min-height: 5rem;
+        }
+
+        .surprise-note {
+            font-size: 1.4rem;
+            color: #1c7ed6;
+            margin-top: 1rem;
+        }
+
+        /* SECTION 4: COUNTDOWN */
+        .countdown-section {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 0;
+            background: rgba(255,255,255,0.5);
+            backdrop-filter: blur(5px);
+            border-radius: 70px;
+            margin: 2rem 0;
+        }
+
+        .countdown-container {
             background: linear-gradient(145deg, #02457a, #1c7ed6);
             border-radius: 70px;
-            padding: 3.5rem;
-            margin: 3rem 0;
+            padding: 4rem;
             text-align: center;
             color: white;
-        }
-
-        .countdown-box h2 {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            font-weight: 800;
-            letter-spacing: 2px;
+            max-width: 700px;
+            width: 90%;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.2);
         }
 
         .countdown-number {
-            font-size: 6rem;
+            font-size: 8rem;
             font-weight: 900;
             background: white;
             color: #02457a;
             display: inline-block;
-            padding: 1rem 3rem;
+            padding: 1.5rem 4rem;
             border-radius: 60px;
-            margin: 1rem 0;
+            margin: 2rem 0;
             box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+            animation: countdownPulse 1s infinite;
         }
 
-        .countdown-label {
-            font-size: 2rem;
-            font-weight: 600;
+        @keyframes countdownPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
-        /* CHIPS SECTION */
-        .chip-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.2rem;
-            justify-content: center;
-            margin: 3rem 0;
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 30px;
+            margin: 2rem 0;
+            overflow: hidden;
         }
 
-        .chip {
-            background: linear-gradient(145deg, #ffffff, #e3f0ff);
+        .progress-fill {
+            height: 100%;
+            background: white;
+            width: 0%;
+            transition: width 1s linear;
+            border-radius: 30px;
+        }
+
+        .countdown-button {
+            background: white;
             color: #02457a;
-            border: 2px solid #4a90e2;
+            border: none;
+            padding: 1.2rem 3rem;
+            font-size: 1.6rem;
+            font-weight: 700;
             border-radius: 60px;
+            cursor: pointer;
+            margin: 1rem 0;
+            transition: all 0.3s;
+        }
+
+        .countdown-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px white;
+        }
+
+        /* SECTION 5: ANIMATED FOOTER */
+        .animated-footer {
+            background: linear-gradient(145deg, #02457a, #1c7ed6);
+            border-radius: 70px 70px 0 0;
+            padding: 4rem 2rem;
+            text-align: center;
+            color: white;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-balloons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-balloon {
+            font-size: 3rem;
+            animation: floatFooter 3s infinite;
+            filter: drop-shadow(0 10px 20px rgba(255,255,255,0.5));
+        }
+
+        .footer-balloon:nth-child(2) { animation-delay: 0.5s; }
+        .footer-balloon:nth-child(3) { animation-delay: 1s; }
+        .footer-balloon:nth-child(4) { animation-delay: 1.5s; }
+
+        @keyframes floatFooter {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .footer-text {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 1.5rem 0;
+            animation: footerGlow 2s infinite;
+        }
+
+        @keyframes footerGlow {
+            0%, 100% { text-shadow: 0 0 20px white; }
+            50% { text-shadow: 0 0 40px gold; }
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+            color: #02457a;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2) rotate(10deg);
+            box-shadow: 0 0 30px gold;
+        }
+
+        .audio-toggle {
+            background: white;
+            color: #02457a;
+            border: none;
             padding: 1rem 2.5rem;
+            border-radius: 50px;
             font-size: 1.4rem;
             font-weight: 700;
-            box-shadow: 0 8px 15px rgba(28, 126, 214, 0.2);
+            cursor: pointer;
+            margin: 1rem 0;
+            transition: all 0.3s;
         }
 
-        /* FOOTER */
-        .footer-note {
-            text-align: center;
-            margin-top: 5rem;
-            font-size: 1.3rem;
-            color: #02457a;
-            font-weight: 600;
-            padding: 2rem;
-            border-top: 2px dashed #4a90e2;
+        .audio-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px white;
         }
 
-        @media (max-width: 600px) {
-            .glass-card { padding: 2rem 1.2rem; }
-            .glass-card h3 { font-size: 1.8rem; }
-            .friend-zone { padding: 2rem 1.5rem; }
-            .friend-avatar { font-size: 5rem; }
-            .friend-text p { font-size: 1.4rem; }
-            .countdown-number { font-size: 4rem; padding: 0.8rem 2rem; }
+        /* Confetti & mini fireworks */
+        .confetti {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            background: #4a90e2;
+            position: absolute;
+            top: -10px;
+            border-radius: 50%;
+            animation: confettiFall 3s linear forwards;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        @keyframes confettiFall {
+            to { transform: translateY(100vh) rotate(720deg); }
+        }
+
+        .mini-firework {
+            position: fixed;
+            width: 5px;
+            height: 5px;
+            background: gold;
+            border-radius: 50%;
+            animation: fireworkExpand 1s ease-out forwards;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        @keyframes fireworkExpand {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(30); opacity: 0; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section-container { padding: 1rem; }
+            .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); }
+            .hero-button { font-size: 1.4rem; padding: 1rem 2rem; }
+            .paragraph-card { padding: 2rem; }
+            .paragraph-card p { font-size: 1.2rem; }
+            .gift-box { font-size: 7rem; }
+            .countdown-number { font-size: 4rem; padding: 1rem 2rem; }
+            .footer-text { font-size: 1.8rem; }
+            .social-icon { width: 50px; height: 50px; font-size: 1.8rem; }
+        }
+
+        @media (max-width: 480px) {
+            .floating-balloon { font-size: 2rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero-button { font-size: 1.2rem; padding: 0.8rem 1.5rem; }
+            .paragraph-card h3 { font-size: 1.8rem; }
+            .gift-container { padding: 2rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- INTRO: 5 SEC FILFAR-STYLE FIREWORKS ONLY (NO TEXT) -->
+    <!-- INTRO: 5 SEC FILFAR-STYLE FIREWORKS ONLY -->
     <div id="intro-container">
         <canvas id="fireworks-canvas"></canvas>
     </div>
 
-    <!-- MAIN WEBSITE - BLUE & WHITE THEME - 8 SECTIONS -->
+    <!-- MAIN WEBSITE - ALL SECTIONS -->
     <div id="main-website">
+        <!-- Parallax layers -->
+        <div class="parallax-layer layer-1" id="layer1"></div>
+        <div class="parallax-layer layer-2" id="layer2"></div>
+        <div class="parallax-layer layer-3" id="layer3"></div>
+        
         <div class="section-container">
             
-            <!-- SECTION 1: HERO -->
-            <section class="hero">
-                <h1>MUSTAFA HASSAN</h1>
-                <div class="hero-badge">🎂 9 MARCH </div>
-                <div class="hero-message">
-                    HAPPY BIRTHDAY BROTHER! MAY YOUR DAY BE FILLED WITH BLUE SKIES AND BRIGHT MOMENTS.
+            <!-- SECTION 1: HERO GREETING -->
+            <section class="hero" id="hero">
+                <div class="floating-elements">
+                    <span class="floating-balloon">🎈</span>
+                    <span class="floating-balloon">🎈</span>
+                    <span class="floating-balloon">🎈</span>
+                    <span class="floating-balloon">🎈</span>
+                    <span class="floating-balloon">🎈</span>
+                    <span class="floating-balloon">🎈</span>
                 </div>
-                <div class="hero-emoji">🎆✨🎇✨🎆</div>
+                <h1>🎉 HAPPY BIRTHDAY MUSTAFA HASSAN! 🎉</h1>
+                <div class="sparkle-text">✨✨✨</div>
+                <button class="hero-button" id="scrollButton">READ YOUR BIRTHDAY MESSAGES</button>
             </section>
 
-            <!-- SECTION 2: ABOUT MUSTAFA -->
-            <h2 class="section-title">ABOUT THE LEGEND</h2>
-            <div class="card-grid">
-                <div class="glass-card">
-                    <h3><span class="emoji-icon">📅</span> 9 MARCH</h3>
-                    <p>A day that marks the arrival of an extraordinary soul. Mustafa Hassan brings light and laughter wherever he goes. Born to shine and inspire everyone around him.</p>
+            <!-- SECTION 2: BIRTHDAY PARAGRAPHS (5 Long Paragraphs) -->
+            <section class="paragraphs-section" id="paragraphs">
+                <div class="paragraph-card" data-speed="0.5">
+                    <h3>✨ OUR JOURNEY TOGETHER</h3>
+                    <p>Mustafa, from the very first day we met, I knew you were someone special. That awkward handshake that turned into a hug, the way you laughed at your own jokes before anyone else could, and how you always knew how to light up a room - these are the memories I treasure most. Remember when we stayed up all night planning that trip that never happened, but ended up having the best time just talking about it? Those moments shaped our friendship into something unbreakable. You've been there through every high and low, celebrating my victories as if they were your own, and lifting me up during my darkest days. That's the kind of friend you are - rare, genuine, and absolutely irreplaceable.</p>
                 </div>
-                <div class="glass-card">
-                    <h3><span class="emoji-icon">🤝</span> TRUE FRIEND</h3>
-                    <p>Loyal, honest, and always there when it matters. Mustafa is the definition of a real male friend. Through thick and thin, he stands strong like a pillar.</p>
+                <div class="paragraph-card" data-speed="0.6">
+                    <h3>🌟 THE MAN YOU'VE BECOME</h3>
+                    <p>Watching you grow over the years has been one of the greatest privileges of my life. From the dreamy-eyed kid with big ambitions to the confident, driven man you are today - your journey inspires everyone around you. You've taught me that success isn't just about reaching goals, but about the person you become along the way. Your kindness, your unwavering integrity, and that ridiculous sense of humor that can make even the worst days better - these are the qualities that define you. You're not just a friend; you're a role model, a confidant, and sometimes the voice of reason I desperately need (even when I don't want to hear it). The world is brighter because you're in it, Mustafa.</p>
                 </div>
-                <div class="glass-card">
-                    <h3><span class="emoji-icon">⭐</span> LEGEND STATUS</h3>
-                    <p>With a heart of gold and a spirit that never quits, Mustafa continues to achieve greatness. Another year means more victories and happy moments.</p>
+                <!-- <div class="paragraph-card" data-speed="0.7">
+                    <h3>🎯 THE ADVENTURES WE'VE SHARED</h3>
+                    <p>I'll never forget that road trip where you insisted on navigating but got us completely lost, and we ended up discovering that hidden waterfall. Or the time we tried to cook together and almost set the kitchen on fire, but somehow created the most amazing meal we've ever tasted. These adventures - big and small - are the threads that weave our friendship together. From late-night gaming sessions that turned into deep conversations about life, to spontaneous beach trips where we just sat and watched the waves, every moment with you feels like an adventure. You have this incredible ability to turn ordinary moments into extraordinary memories, and I'm so grateful to be part of your story.</p>
+                </div> -->
+                <div class="paragraph-card" data-speed="0.8">
+                    <h3>💪 THROUGH THICK AND THIN</h3>
+                    <p>Real friendship isn't tested during the good times - it's forged in the difficult moments. And you, Mustafa, have proven time and time again that you're the kind of friend legends are made of. When I was going through that tough breakup, you showed up at my door with ice cream and terrible movies, not saying much but just being there. When I doubted myself, you believed in me twice as hard until I started believing too. You've celebrated my smallest victories and mourned my biggest losses as if they were your own. In a world where people often drift apart, you've anchored our friendship with loyalty, honesty, and that unwavering presence that lets me know I'm never truly alone.</p>
                 </div>
-            </div>
+                <div class="paragraph-card" data-speed="0.9">
+                    <h3>🎂 WISHES FOR THE YEAR AHEAD</h3>
+                    <p>As you blow out the candles this year, I wish you everything your heart desires and more. May this next trip around the sun bring you adventures that take your breath away, success that exceeds your wildest dreams, and love that fills every corner of your heart. May you always have the courage to chase the impossible, the wisdom to appreciate the small moments, and the strength to overcome any obstacle. But most of all, I wish you happiness - the deep, lasting kind that comes from knowing you are loved, valued, and appreciated exactly as you are. Happy Birthday, my brother. The best years are still ahead, and I can't wait to witness everything you'll achieve. Here's to you, Mustafa Hassan - may your light continue to shine brighter than a thousand fireworks!</p>
+                </div>
+            </section>
 
-            <!-- SECTION 3: FRIEND ZONE (PERSONALIZED) -->
-            <div class="friend-zone">
-                <div class="friend-avatar">👑🦁</div>
-                <div class="friend-text">
-                    <h4>MUSTAFA HASSAN</h4>
-                    <p>“To my brother from another mother. You're the firework that lights up my life. Happy Birthday, Mustafa!”</p>
-                    <span>— YOUR BEST FRIEND FOREVER</span>
+            <!-- SECTION 3: SURPRISE GIFT -->
+            <section class="gift-section" id="gift">
+                <div class="gift-container" data-speed="0.4">
+                    <div class="gift-box" id="giftBox">🎁</div>
+                    <div class="gift-message" id="giftMessage">CLICK THE GIFT FOR A SURPRISE!</div>
+                    <div class="surprise-note">(Something special awaits...)</div>
                 </div>
-            </div>
+            </section>
 
-            <!-- SECTION 4: BIRTHDAY WISHES (CARDS) -->
-            <h2 class="section-title">BIRTHDAY WISHES</h2>
-            <div class="wishes-grid">
-                <div class="wish-card">
-                    <p>“May your year be filled with success, happiness, and endless adventures. You deserve all the joy in the world!”</p>
-                    <div class="wish-author">— FROM YOUR BROTHER</div>
+            <!-- SECTION 4: COUNTDOWN MOMENT -->
+            <section class="countdown-section" id="countdown">
+                <div class="countdown-container">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">🎂 BIRTHDAY MOMENT 🎂</h2>
+                    <div class="countdown-number" id="countdownDisplay">10</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <button class="countdown-button" id="startCountdown">START THE MAGIC</button>
                 </div>
-                <div class="wish-card">
-                    <p>“Happy 9th March! Stay awesome, stay humble, and keep crushing every goal you set. The world is yours!”</p>
-                    <div class="wish-author">— A TRUE FAN</div>
-                </div>
-                <div class="wish-card">
-                    <p>“Wishing you a birthday as bright and beautiful as your smile. May all your dreams come true, Mustafa!”</p>
-                    <div class="wish-author">— FRIEND FOREVER</div>
-                </div>
-            </div>
+            </section>
 
-            <!-- SECTION 5: FUN GAMES WITH TWIST -->
-            <h2 class="section-title">BIRTHDAY GAMES</h2>
-            <div class="games-grid">
-                <div class="game-card">
-                    <h3>🎆 FIREWORK CLICK</h3>
-                    <p>CLICK TO LAUNCH A VIRTUAL FIREWORK FOR MUSTAFA</p>
-                    <button class="game-button" id="firework-clicker">LAUNCH FIREWORK</button>
-                    <div class="game-result" id="click-result"></div>
+            <!-- SECTION 5: ANIMATED FOOTER -->
+            <footer class="animated-footer">
+                <div class="footer-balloons">
+                    <span class="footer-balloon">🎈</span>
+                    <span class="footer-balloon">🎈</span>
+                    <span class="footer-balloon">🎈</span>
+                    <span class="footer-balloon">🎈</span>
                 </div>
-
-                <div class="game-card">
-                    <h3>🎲 LUCKY NUMBER</h3>
-                    <p>GUESS MUSTAFA'S LUCKY NUMBER (1-10)</p>
-                    <button class="game-button" id="lucky-number">PICK NUMBER</button>
-                    <div class="game-result" id="number-result"></div>
-                </div>
-
-                <div class="game-card">
-                    <h3>✨ WISH GENERATOR</h3>
-                    <p>GET A RANDOM BIRTHDAY WISH</p>
-                    <button class="game-button" id="wish-generator">GENERATE WISH</button>
-                    <div class="game-result" id="wish-result"></div>
-                </div>
-            </div>
-
-            <!-- SECTION 6: MEMORIES CORNER -->
-            <!-- <h2 class="section-title">CHERISHED MOMENTS</h2>
-            <div class="memories-grid">
-                <div class="memory-item">
-                    <div class="memory-emoji">🎮</div>
-                    <h4>GAME NIGHTS</h4>
-                    <p>Late night gaming sessions and endless laughter. Those memories will last forever.</p>
-                </div>
-                <div class="memory-item">
-                    <div class="memory-emoji">🏀</div>
-                    <h4>COURT KINGS</h4>
-                    <p>From basketball games to friendly competitions, always a good time together.</p>
-                </div>
-                <div class="memory-item">
-                    <div class="memory-emoji">🍕</div>
-                    <h4>FOOD ADVENTURES</h4>
-                    <p>Exploring new places and trying new foods. Every meal was a celebration.</p>
-                </div>
-                <div class="memory-item">
-                    <div class="memory-emoji">🎬</div>
-                    <h4>MOVIE MARATHONS</h4>
-                    <p>Watching movies till dawn, discussing life, and making plans for the future.</p>
-                </div>
-            </div> -->
-
-            <!-- SECTION 7: COUNTDOWN TO BIRTHDAY -->
-            <h2 class="section-title">COUNTDOWN</h2>
-            <div class="countdown-box">
-                <h2>MARCH 9TH IS HERE!</h2>
-                <div class="countdown-number">9 MARCH</div>
-                <div class="countdown-label">THE DAY MUSTAFA HASSAN WAS BORN</div>
-                <p style="font-size: 1.8rem; margin-top: 2rem; font-weight: 600;">CELEBRATE WITH FIREWORKS AND JOY</p>
-            </div>
-
-            <!-- SECTION 8: BIRTHDAY CHIPS / TAGS -->
-            <h2 class="section-title">BIRTHDAY TAGS</h2>
-            <div class="chip-wrapper">
-                <div class="chip">🎂 MUSTAFA HASSAN</div>
-                <div class="chip">📅 9 MARCH</div>
-                <div class="chip">🔥 MALE FRIEND</div>
-                <div class="chip">🎆 FIREWORKS</div>
-                <div class="chip">💙 BLUE THEME</div>
-                <div class="chip">🎮 GAME TIME</div>
-                <div class="chip">✨ LEGEND</div>
-                <div class="chip">🏆 WINNER</div>
-            </div>
-
-            <div class="footer-note">
-                HAPPY BIRTHDAY MUSTAFA HASSAN · 9TH MARCH · CELEBRATE IN STYLE
-            </div>
+                <div class="footer-text">THANKS FOR CELEBRATING! 🎉</div>
+                <!-- <div class="social-icons">
+                    <span class="social-icon" onclick="createConfetti(20)">📱</span>
+                    <span class="social-icon" onclick="createConfetti(20)">📘</span>
+                    <span class="social-icon" onclick="createConfetti(20)">📷</span>
+                    <span class="social-icon" onclick="createConfetti(20)">🐦</span>
+                </div> -->
+                <button class="audio-toggle" id="audioToggle">🔊 PLAY BIRTHDAY MUSIC</button>
+                <p style="margin-top: 2rem; font-size: 1.2rem;">MADE WITH 💙 FOR MUSTAFA · 9TH MARCH</p>
+            </footer>
         </div>
     </div>
 
     <script>
         (function() {
-            // ---------- FILFAR-STYLE FIREWORKS ENGINE (PURE, 5 SEC) ----------
+            // ---------- FILFAR-STYLE FIREWORKS ENGINE (5 SEC) ----------
             const canvas = document.getElementById('fireworks-canvas');
             const ctx = canvas.getContext('2d');
             
@@ -760,7 +807,7 @@
             
             requestAnimationFrame(animate);
             
-            // ---------- INTRO TIMER: EXACTLY 5 SECONDS ----------
+            // ---------- INTRO TIMER: 5 SECONDS ----------
             const introOverlay = document.getElementById('intro-container');
             const mainSite = document.getElementById('main-website');
 
@@ -769,46 +816,195 @@
                 setTimeout(() => {
                     introOverlay.style.display = 'none';
                     mainSite.style.opacity = '1';
+                    initGSAP();
                 }, 1500);
             }, 5000);
 
             mainSite.style.opacity = '0';
 
-            // ---------- GAMES INTERACTIVITY ----------
-            document.getElementById('firework-clicker').addEventListener('click', function() {
-                const result = document.getElementById('click-result');
-                const messages = [
-                    '🎆 BOOM! FIREWORK LIGHTS THE BLUE SKY!',
-                    '✨ MUSTAFA SMILES AT THE FIREWORK SHOW!',
-                    '💥 ANOTHER FIREWORK FOR MUSTAFA!',
-                    '🎇 THE SKY EXPLODES WITH COLORS!'
-                ];
-                result.textContent = messages[Math.floor(Math.random() * messages.length)];
+            // ---------- GSAP SCROLLTRIGGER & PARALLAX ----------
+            function initGSAP() {
+                gsap.registerPlugin(ScrollTrigger);
+
+                // Parallax layers
+                gsap.to('#layer1', {
+                    yPercent: 20,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: '#main-website',
+                        start: 'top top',
+                        end: 'bottom bottom',
+                        scrub: true
+                    }
+                });
+
+                gsap.to('#layer2', {
+                    yPercent: 30,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: '#main-website',
+                        start: 'top top',
+                        end: 'bottom bottom',
+                        scrub: true
+                    }
+                });
+
+                gsap.to('#layer3', {
+                    yPercent: 40,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: '#main-website',
+                        start: 'top top',
+                        end: 'bottom bottom',
+                        scrub: true
+                    }
+                });
+
+                // Paragraph cards fade-in on scroll
+                gsap.utils.toArray('.paragraph-card').forEach((card, i) => {
+                    gsap.fromTo(card, 
+                        { x: i % 2 === 0 ? -100 : 100, opacity: 0 },
+                        {
+                            x: 0,
+                            opacity: 1,
+                            duration: 1,
+                            scrollTrigger: {
+                                trigger: card,
+                                start: 'top 80%',
+                                end: 'top 50%',
+                                scrub: 0.5,
+                                toggleActions: 'play none none reverse'
+                            }
+                        }
+                    );
+                });
+
+                // Gift box parallax
+                gsap.to('#giftBox', {
+                    y: -30,
+                    rotation: 5,
+                    scrollTrigger: {
+                        trigger: '#gift',
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: true
+                    }
+                });
+            }
+
+            // ---------- SCROLL BUTTON ----------
+            document.getElementById('scrollButton').addEventListener('click', () => {
+                document.getElementById('paragraphs').scrollIntoView({ behavior: 'smooth' });
             });
 
-            document.getElementById('lucky-number').addEventListener('click', function() {
-                const result = document.getElementById('number-result');
-                const luckyNumber = Math.floor(Math.random() * 10) + 1;
-                if (luckyNumber === 7) {
-                    result.textContent = '🎉 7! JACKPOT! MUSTAFA SENDS A BIG HUG!';
-                } else if (luckyNumber === 9) {
-                    result.textContent = '🎂 9! MARCH 9TH! EXTRA LUCKY DAY!';
+            // ---------- GIFT SURPRISE ----------
+            document.getElementById('giftBox').addEventListener('click', function() {
+                const giftMsg = document.getElementById('giftMessage');
+                giftMsg.innerHTML = '🎉 HAPPY BIRTHDAY MUSTAFA! YOU\'RE A LEGEND! 🎉';
+                createConfetti(100);
+                createMiniFireworks(5);
+                
+                // Funny meme text
+                setTimeout(() => {
+                    giftMsg.innerHTML = '😂 JUST KIDDING... THE REAL GIFT IS OUR FRIENDSHIP! 🎁';
+                }, 3000);
+            });
+
+            // ---------- COUNTDOWN ----------
+            let countdownInterval;
+            document.getElementById('startCountdown').addEventListener('click', function() {
+                let count = 10;
+                const display = document.getElementById('countdownDisplay');
+                const progress = document.getElementById('progressFill');
+                
+                if (countdownInterval) clearInterval(countdownInterval);
+                
+                countdownInterval = setInterval(() => {
+                    count--;
+                    display.textContent = count;
+                    progress.style.width = ((10 - count) * 10) + '%';
+                    
+                    if (count === 0) {
+                        clearInterval(countdownInterval);
+                        display.textContent = '🎉';
+                        createConfetti(100);
+                        createMiniFireworks(8);
+                        progress.style.width = '100%';
+                        
+                        setTimeout(() => {
+                            display.textContent = 'HAPPY BIRTHDAY!';
+                        }, 2000);
+                    }
+                }, 1000);
+            });
+
+            // ---------- AUDIO TOGGLE (Simple beep simulation) ----------
+            let audioEnabled = false;
+            document.getElementById('audioToggle').addEventListener('click', function() {
+                audioEnabled = !audioEnabled;
+                const btn = document.getElementById('audioToggle');
+                if (audioEnabled) {
+                    btn.textContent = '🔊 MUSIC ON';
+                    playBirthdayTune();
                 } else {
-                    result.textContent = `NUMBER ${luckyNumber} - STILL A BLESSING!`;
+                    btn.textContent = '🔇 MUSIC OFF';
                 }
             });
 
-            document.getElementById('wish-generator').addEventListener('click', function() {
-                const result = document.getElementById('wish-result');
-                const wishes = [
-                    'HAPPY BIRTHDAY MUSTAFA! STAY BLESSED!',
-                    '9TH MARCH - A DAY TO CELEBRATE YOU!',
-                    'MAY YOUR YEAR BE FILLED WITH BLUE SKIES!',
-                    'YOU ARE A TRUE LEGEND MUSTAFA!',
-                    'HAPPY BIRTHDAY BROTHER FROM ANOTHER MOTHER!'
-                ];
-                result.textContent = wishes[Math.floor(Math.random() * wishes.length)];
-            });
+            function playBirthdayTune() {
+                if (!audioEnabled) return;
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const now = audioCtx.currentTime;
+                
+                const playNote = (freq, start, duration) => {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.frequency.value = freq;
+                    gain.gain.setValueAtTime(0.1, start);
+                    gain.gain.exponentialRampToValueAtTime(0.01, start + duration);
+                    osc.start(start);
+                    osc.stop(start + duration);
+                };
+                
+                // Happy birthday melody
+                playNote(523.25, now, 0.5); // C
+                playNote(523.25, now + 0.4, 0.5); // C
+                playNote(587.33, now + 0.8, 0.5); // D
+                playNote(523.25, now + 1.2, 0.5); // C
+                playNote(698.46, now + 1.6, 0.5); // F
+                playNote(659.25, now + 2.0, 1); // E
+            }
+
+            // ---------- CONFETTI FUNCTION ----------
+            window.createConfetti = function(count) {
+                for (let i = 0; i < count; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.background = `hsl(${Math.random() * 360}, 100%, 60%)`;
+                    confetti.style.animationDuration = Math.random() * 2 + 2 + 's';
+                    confetti.style.width = Math.random() * 15 + 5 + 'px';
+                    confetti.style.height = confetti.style.width;
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 3000);
+                }
+            };
+
+            window.createMiniFireworks = function(count) {
+                for (let i = 0; i < count; i++) {
+                    setTimeout(() => {
+                        const firework = document.createElement('div');
+                        firework.className = 'mini-firework';
+                        firework.style.left = Math.random() * 100 + '%';
+                        firework.style.top = Math.random() * 100 + '%';
+                        firework.style.background = `hsl(${Math.random() * 360}, 100%, 60%)`;
+                        document.body.appendChild(firework);
+                        setTimeout(() => firework.remove(), 1000);
+                    }, i * 200);
+                }
+            };
         })();
     </script>
 </body>
